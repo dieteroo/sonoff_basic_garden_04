@@ -1,26 +1,3 @@
-/*
- * Example of using esp-homekit library to control
- * a simple $5 Sonoff Basic using HomeKit.
- * The esp-wifi-config library is also used in this
- * example. This means you don't have to specify
- * your network's SSID and password before building.
- *
- * In order to flash the sonoff basic you will have to
- * have a 3,3v (logic level) FTDI adapter.
- *
- * To flash this example connect 3,3v, TX, RX, GND
- * in this order, beginning in the (square) pin header
- * next to the button.
- * Next hold down the button and connect the FTDI adapter
- * to your computer. The sonoff is now in flash mode and
- * you can flash the custom firmware.
- *
- * WARNING: Do not connect the sonoff to AC while it's
- * connected to the FTDI adapter! This may fry your
- * computer and sonoff.
- *
- */
-
 #include <stdio.h>
 #include <espressif/esp_wifi.h>
 #include <espressif/esp_sta.h>
@@ -147,10 +124,10 @@ homekit_accessory_t *accessories[] = {
     HOMEKIT_ACCESSORY(.id=1, .category=homekit_accessory_category_switch, .services=(homekit_service_t*[]){
         HOMEKIT_SERVICE(ACCESSORY_INFORMATION, .characteristics=(homekit_characteristic_t*[]){
             &name,
-            HOMEKIT_CHARACTERISTIC(MANUFACTURER, "iTEAD"),
-            HOMEKIT_CHARACTERISTIC(SERIAL_NUMBER, "8260300000"),
+            HOMEKIT_CHARACTERISTIC(MANUFACTURER, "dieteroo"),
+            HOMEKIT_CHARACTERISTIC(SERIAL_NUMBER, "835040B748"),
             HOMEKIT_CHARACTERISTIC(MODEL, "Basic"),
-            HOMEKIT_CHARACTERISTIC(FIRMWARE_REVISION, "0.1.6"),
+            HOMEKIT_CHARACTERISTIC(FIRMWARE_REVISION, "1.0.0"),
             HOMEKIT_CHARACTERISTIC(IDENTIFY, switch_identify),
             NULL
         }),
@@ -166,7 +143,7 @@ homekit_accessory_t *accessories[] = {
 
 homekit_server_config_t config = {
     .accessories = accessories,
-    .password = "647-13-003"
+    .password = "647-13-034"
 };
 
 void on_wifi_ready() {
